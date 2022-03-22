@@ -12,12 +12,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])/*Render view Register.blade.php */
-                ->name('register');
+                ->name('register');//name('register') indicates that we can use {{ route('register') }} to perform this GET method
 
     Route::post('register', [RegisteredUserController::class, 'store']);
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
-                ->name('login');
+                ->name('login'); 
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
 
