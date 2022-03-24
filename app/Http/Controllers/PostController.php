@@ -12,11 +12,11 @@ class PostController extends Controller
         $posts = Post::latest()->with(['user', 'likes'])->paginate(20);
 
         return view('posts.index', [
-            'posts' => $posts
+            'posts' => $posts,
         ]);
     }
 
-    public function show()
+    public function show(Post $post)
     {
         return view('posts.show',[
             'post' => $post,

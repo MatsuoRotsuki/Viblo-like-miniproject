@@ -7,7 +7,7 @@
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Please confirm your password before continuing.') }}
+            {{ __('Hãy xác nhận mật khẩu trước khi tiếp tục.') }}
         </div>
 
         <!-- Validation Errors -->
