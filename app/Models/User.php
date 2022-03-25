@@ -5,6 +5,8 @@ namespace App\Models;
 use App\Models\Like;
 use App\Models\Post;
 use App\Models\Comment;
+use App\Models\PostVote;
+use App\Models\CommentVote;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -68,5 +70,13 @@ class User extends Authenticatable
     public function bookmarks()
     {
         return $this->hasMany(Bookmark::class);
+    }
+    public function votes()
+    {
+        return $this->hasMany(PostVote::class);
+    }
+    public function votes2()
+    {
+        return $this->hasMany(CommentVote::class);
     }
 }

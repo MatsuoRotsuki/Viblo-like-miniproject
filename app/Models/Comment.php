@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\User;
+use App\Models\CommentVote;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -18,5 +19,15 @@ class Comment extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function votedBy(User $user)
+    {
+        return $this->votes->contains('user_id', $user->id);
+    }
+
+    public function votes()
+    {
+        return $this->hasMany(CommentVote::class);
     }
 }

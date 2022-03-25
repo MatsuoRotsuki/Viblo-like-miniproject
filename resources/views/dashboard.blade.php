@@ -10,6 +10,13 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     You're logged in!
+                    <a href="{{ route('bookmarks') }}">
+                        <img height="50px" width="50px" src="https://upload.wikimedia.org/wikipedia/commons/1/14/Octicons-triangle-up.svg" alt="Upvote">
+                    </a>
+                    {{ Auth::user()->username }}
+                    <a href="{{ route('bookmarks') }}">
+                        <img height="50px" width="50px" src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Octicons-triangle-down.svg" alt="Downvote">
+                    </a>
                 </div>
             </div>
         </div>

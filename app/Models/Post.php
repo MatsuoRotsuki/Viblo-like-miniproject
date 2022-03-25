@@ -6,6 +6,7 @@ use App\Models\Like;
 use App\Models\User;
 use App\Models\Comment;
 use App\Models\Bookmark;
+use App\Models\PostVote;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -28,6 +29,11 @@ class Post extends Model
         return $this->bookmarks->contains('user_id', $user->id);
     }
 
+    public function votedBy(User $user)
+    {
+        return $this->votes->contains('user_id',$user->id);
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -37,12 +43,19 @@ class Post extends Model
     {
         return $this->hasMany(Like::class);
     }
+
     public function comments()
     {
         return $this->hasMany(Comment::class);
     }
+
     public function bookmarks()
     {
         return $this->hasMany(Bookmark::class);
+    }
+
+    public function votes()
+    {
+        return $this->hasMany(PostVote::class);
     }
 }
