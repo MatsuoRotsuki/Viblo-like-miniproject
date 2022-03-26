@@ -37,7 +37,7 @@
     </div>
 
     <div class="flex items-center">
-        <!-- VoteUp/VoteDown -->
+        <!-- VoteUp/VoteDown Post -->
         @auth
             @if (!$post->votedBy(auth()->user()))
                 <form action="{{ route('posts.vote', ['post' => $post, 'vote' => 'up']) }}" method="post" class="mr-1">

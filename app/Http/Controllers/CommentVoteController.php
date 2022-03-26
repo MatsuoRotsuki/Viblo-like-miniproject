@@ -20,6 +20,8 @@ class CommentVoteController extends Controller
                 $request->user()->votes2()->where('comment_id', $comment->id)->update(['vote' => $vote]);
 
                 return back();
+            } else {
+                return dd('Error: Forbiden');
             }
         }
 

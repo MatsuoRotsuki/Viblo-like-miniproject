@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Requests\Auth\LoginRequest;
+use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\BookmarkController;
 use App\Http\Controllers\PostLikeController;
@@ -52,6 +54,14 @@ Route::delete('/posts/{post}/bookmark',[BookmarkController::class,'destroy'])->n
 Route::post('/posts/{post}/{vote}',[PostVoteController::class, 'store'])->name('posts.vote');//Done
 Route::delete('/posts/{post}/unvote',[PostVoteController::class,'destroy'])->name('posts.unvote');//Done
 
-Route::post('/comments/{comment}/{vote}',[CommentVoteController::class,'store'])->name('comments.vote');//Undone
-Route::delete('/comments/{comment}/unvote',[CommentVoteController::class,'destroy'])->name('comments.unvote');//Undone
+Route::post('/comments/{comment}/{vote}',[CommentVoteController::class,'store'])->name('comments.vote');//Done
+Route::delete('/comments/{comment}/unvote',[CommentVoteController::class,'destroy'])->name('comments.unvote');//Done
+
+Route::get('/auth/redirect', function() {
+    return Socialite::driver('github')->redirect();
+});
+Route::get('/auth/callback', function() {
+    $user = Socialite::driver('github')->user();
+});
+
 require __DIR__.'/auth.php';

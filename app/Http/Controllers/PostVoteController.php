@@ -17,10 +17,12 @@ class PostVoteController extends Controller
     {
         if ($post->votedBy($request->user()))
         {
-            if(!$post->votes()->where('user_id', $request->user()->id)->contains('vote',$vote))
+            if(!$post->votes->where('user_id', $request->user()->id)->contains('vote',$vote))
             {
                 $request->user()->votes()->where('post_id', $post->id)->update(['vote' => $vote]);
                 return back();
+            } else {
+                return dd('Error: Forbidden');
             }
         }
 
