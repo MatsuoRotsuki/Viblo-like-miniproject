@@ -17,6 +17,7 @@
                     <a href="{{ route('bookmarks') }}">
                         <img height="50px" width="50px" src="https://upload.wikimedia.org/wikipedia/commons/1/1b/Octicons-triangle-down.svg" alt="Downvote">
                     </a> --}}
+                    <img src="https://wallpaperaccess.com/full/1271867.png" alt="">
                 </div>
             </div>
         </div>
